@@ -7,6 +7,7 @@ import { PageProps } from '@/types';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
+import { createElement } from 'react';
 import { Toaster } from 'sonner';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Salepost';
@@ -29,8 +30,36 @@ createInertiaApp({
                 enableSystem
                 storageKey="salepost-theme"
             >
-                <FlashToast />
-                <App {...props} />
+                <App {...props}>
+                    {({ Component, props: currentPageProps, key }) => {
+                        const page = <Component key={key} {...currentPageProps} />;
+                        const layout = Component.layout as any;
+
+                        const renderedPage = (() => {
+                            if (typeof layout === 'function') {
+                                return layout(page);
+                            }
+
+                            if (Array.isArray(layout)) {
+                                return [...layout, page]
+                                    .reverse()
+                                    .reduce(
+                                        (children: any, Layout: any) =>
+                                            createElement(Layout, { children, ...currentPageProps }),
+                                    );
+                            }
+
+                            return page;
+                        })();
+
+                        return (
+                            <>
+                                <FlashToast />
+                                {renderedPage}
+                            </>
+                        );
+                    }}
+                </App>
                 <Toaster richColors position="top-right" />
             </ThemeProvider>,
         );
