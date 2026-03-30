@@ -1,0 +1,88 @@
+@import url('https://fonts.bunny.net/css?family=dm-sans:400,500,700&family=space-grotesk:500,700');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 40 33% 98%;
+        --foreground: 210 28% 12%;
+        --muted: 30 24% 92%;
+        --muted-foreground: 215 16% 40%;
+        --card: 0 0% 100%;
+        --card-foreground: 210 28% 12%;
+        --border: 32 20% 84%;
+        --primary: 166 72% 27%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 39 85% 58%;
+        --secondary-foreground: 210 28% 12%;
+        --danger: 0 72% 52%;
+        --success: 145 63% 42%;
+        --ring: 166 72% 27%;
+    }
+
+    .dark {
+        --background: 213 28% 9%;
+        --foreground: 45 60% 97%;
+        --muted: 215 21% 16%;
+        --muted-foreground: 214 16% 68%;
+        --card: 215 23% 13%;
+        --card-foreground: 45 60% 97%;
+        --border: 215 18% 22%;
+        --primary: 165 70% 40%;
+        --primary-foreground: 213 28% 9%;
+        --secondary: 43 89% 62%;
+        --secondary-foreground: 213 28% 9%;
+        --danger: 0 74% 60%;
+        --success: 145 63% 50%;
+        --ring: 165 70% 40%;
+    }
+
+    * {
+        @apply border-transparent;
+    }
+
+    body {
+        @apply min-h-screen font-sans antialiased;
+        font-family: 'DM Sans', sans-serif;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        background-image:
+            radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 20rem),
+            radial-gradient(circle at bottom left, rgba(13, 148, 136, 0.12), transparent 24rem);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Space Grotesk', sans-serif;
+    }
+}
+
+@layer components {
+    .border-base {
+        border-color: hsl(var(--border));
+    }
+
+    .bg-panel {
+        background-color: hsl(var(--card));
+        color: hsl(var(--card-foreground));
+    }
+
+    .bg-muted-panel {
+        background-color: hsl(var(--muted));
+        color: hsl(var(--foreground));
+    }
+
+    .text-muted-copy {
+        color: hsl(var(--muted-foreground));
+    }
+
+    .page-shell {
+        @apply mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8;
+    }
+}
