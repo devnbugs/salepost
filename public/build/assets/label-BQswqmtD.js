@@ -1,0 +1,1 @@
+import{j as o}from"./app-Dye8xi4i.js";import{h as s}from"./card-C1jwTPxo.js";function a({className:m,...t}){return o.jsx("label",{className:s("mb-1 block text-sm font-medium",m),...t})}export{a as L};

@@ -1,0 +1,1 @@
+import{r as n,j as t}from"./app-Dye8xi4i.js";import{h as a}from"./card-C1jwTPxo.js";const e=n.forwardRef(({className:r,...s},o)=>t.jsx("input",{ref:o,className:a("border-base bg-panel w-full rounded-xl border px-3 py-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-[hsl(var(--ring))]",r),...s}));e.displayName="Input";export{e as I};

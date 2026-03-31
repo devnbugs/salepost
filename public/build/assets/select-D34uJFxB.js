@@ -1,0 +1,1 @@
+import{j as o}from"./app-Dye8xi4i.js";import{h as n}from"./card-C1jwTPxo.js";function i({className:r,children:s,...e}){return o.jsx("select",{className:n("border-base bg-panel w-full rounded-xl border px-3 py-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-[hsl(var(--ring))]",r),...e,children:s})}export{i as S};
