@@ -1,0 +1,1 @@
+import{r as s,j as o}from"./app-Dye8xi4i.js";import{h as t}from"./card-C1jwTPxo.js";const n=s.forwardRef(({className:r,...a},e)=>o.jsx("textarea",{ref:e,className:t("border-base bg-panel min-h-[120px] w-full rounded-xl border px-3 py-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-[hsl(var(--ring))]",r),...a}));n.displayName="Textarea";export{n as T};
