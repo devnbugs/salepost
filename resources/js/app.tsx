@@ -10,7 +10,7 @@ import { createRoot } from 'react-dom/client';
 import { createElement } from 'react';
 import { Toaster } from 'sonner';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Salepost';
+const appName = import.meta.env.VITE_APP_NAME || 'AS Mai-Brass';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

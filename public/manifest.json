@@ -1,0 +1,16 @@
+{
+    "name": "AS MaiBrass",
+    "short_name": "AS Mai-Brass",
+    "background_color": "#ffffff",
+    "display": "fullscreen",
+    "description": "A Progressive Web Application setup for Laravel projects.",
+    "theme_color": "#ffffff",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block access to sensitive files
+    RewriteRule ^(\.env|composer\.json|composer\.lock|artisan|storage|vendor) - [F,L]
+
+    # Redirect everything to public
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Laravel routing
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ public/index.php [L]
+</IfModule>
+AddType application/x-httpd-php84 .php

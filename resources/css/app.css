@@ -1,4 +1,4 @@
-@import url('https://fonts.bunny.net/css?family=dm-sans:400,500,700&family=space-grotesk:500,700');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -45,7 +45,7 @@
 
     body {
         @apply min-h-screen font-sans antialiased;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Bricolage+Grotesque', sans-serif;
         background-color: hsl(var(--background));
         color: hsl(var(--foreground));
         background-image:
@@ -59,7 +59,7 @@
     h4,
     h5,
     h6 {
-        font-family: 'Space Grotesk', sans-serif;
+        font-family: 'Bricolage+Grotesque', sans-serif;
     }
 }
 
