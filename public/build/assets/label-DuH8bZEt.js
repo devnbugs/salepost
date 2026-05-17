@@ -1,0 +1,1 @@
+import{j as o}from"./app--YXLKvYn.js";import{h as s}from"./card-DOqOnMuk.js";function a({className:m,...t}){return o.jsx("label",{className:s("mb-1 block text-sm font-medium",m),...t})}export{a as L};
