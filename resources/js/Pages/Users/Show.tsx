@@ -25,7 +25,7 @@ export default function UsersShow({ user }: any) {
                     </CardHeader>
                     <CardContent className="space-y-2">
                         <p>{user.email}</p>
-                        <p className="text-muted-copy">{user.job_title ?? 'No job title'}</p>
+                        <p className="text-muted-foreground">{user.job_title ?? 'No job title'}</p>
                     </CardContent>
                 </Card>
 

@@ -43,7 +43,7 @@ export default function UsersIndex({ users, filters }: any) {
                         <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
                             <div>
                                 <p className="text-lg font-semibold">{user.name}</p>
-                                <p className="text-sm text-muted-copy">{user.email}</p>
+                                <p className="text-sm text-muted-foreground">{user.email}</p>
                             </div>
                             <div className="flex flex-wrap items-center gap-2">
                                 {user.roles.map((role: any) => (

@@ -130,11 +130,11 @@ export default function Dashboard(props: DashboardProps) {
                         {props.recent_invoices.map((invoice) => (
                             <div
                                 key={invoice.id}
-                                className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3"
+                                className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
                             >
                                 <div>
                                     <p className="font-medium">{invoice.invoice_number}</p>
-                                    <p className="text-sm text-muted-copy">
+                                    <p className="text-sm text-muted-foreground">
                                         {invoice.customer?.name ?? 'Walk-in customer'}
                                     </p>
                                 </div>
@@ -157,11 +157,11 @@ export default function Dashboard(props: DashboardProps) {
                         {props.recent_cash_transactions.map((transaction) => (
                             <div
                                 key={transaction.id}
-                                className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3"
+                                className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
                             >
                                 <div>
                                     <p className="font-medium">{transaction.transaction_number}</p>
-                                    <p className="text-sm text-muted-copy">
+                                    <p className="text-sm text-muted-foreground">
                                         {transaction.category_name ?? 'General transaction'}
                                     </p>
                                 </div>
@@ -184,7 +184,7 @@ export default function Dashboard(props: DashboardProps) {
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {props.top_customers.map((customer) => (
-                            <div key={customer.label} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3">
+                            <div key={customer.label} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
                                 <span>{customer.label}</span>
                                 <span className="font-semibold">{currency(customer.total)}</span>
                             </div>
@@ -198,12 +198,12 @@ export default function Dashboard(props: DashboardProps) {
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {props.low_stock_products.map((product) => (
-                            <div key={product.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3">
+                            <div key={product.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
                                 <div className="flex items-center gap-3">
-                                    <Boxes className="h-4 w-4 text-muted-copy" />
+                                    <Boxes className="h-4 w-4 text-muted-foreground" />
                                     <span>{product.name}</span>
                                 </div>
-                                <span className="text-sm text-muted-copy">
+                                <span className="text-sm text-muted-foreground">
                                     {product.current_stock} / {product.reorder_level}
                                 </span>
                             </div>

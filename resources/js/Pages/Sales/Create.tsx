@@ -95,7 +95,7 @@ export default function SalesCreate({ customers, products, status_options }: any
                             </Button>
                         </div>
                         {data.items.map((item: any, index: number) => (
-                            <div key={index} className="grid gap-3 rounded-2xl border border-base p-4 md:grid-cols-5">
+                            <div key={index} className="grid gap-3 rounded-lg border border-border p-4 md:grid-cols-5">
                                 <Select
                                     value={item.product_id}
                                     onChange={(e) => {
@@ -157,7 +157,7 @@ export default function SalesCreate({ customers, products, status_options }: any
                         </div>
                     </div>
 
-                    <Card className="bg-muted-panel">
+                    <Card className="bg-muted">
                         <CardContent className="grid gap-4 p-5 md:grid-cols-3">
                             <div>
                                 <Label>Initial Payment</Label>
@@ -178,8 +178,8 @@ export default function SalesCreate({ customers, products, status_options }: any
                                     <option value="pos">POS</option>
                                 </Select>
                             </div>
-                            <div className="rounded-2xl bg-panel p-4">
-                                <p className="text-sm text-muted-copy">Estimated Total</p>
+                            <div className="rounded-lg bg-card p-4">
+                                <p className="text-sm text-muted-foreground">Estimated Total</p>
                                 <p className="mt-2 text-2xl font-bold">{currency(total)}</p>
                             </div>
                         </CardContent>

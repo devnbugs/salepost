@@ -24,13 +24,13 @@ export default function SalesShow({ sale }: any) {
             <div className="grid gap-6 md:grid-cols-3">
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-copy">Total</p>
+                        <p className="text-sm text-muted-foreground">Total</p>
                         <p className="mt-2 text-2xl font-bold">{currency(sale.total_amount)}</p>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-copy">Amount Paid</p>
+                        <p className="text-sm text-muted-foreground">Amount Paid</p>
                         <p className="mt-2 text-2xl font-bold">{currency(sale.amount_paid)}</p>
                     </CardContent>
                 </Card>
@@ -50,10 +50,10 @@ export default function SalesShow({ sale }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {sale.items.map((item: any) => (
-                        <div key={item.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3">
+                        <div key={item.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
                             <div>
                                 <p className="font-medium">{item.product?.name}</p>
-                                <p className="text-sm text-muted-copy">
+                                <p className="text-sm text-muted-foreground">
                                     {item.quantity} x {currency(item.unit_price)}
                                 </p>
                             </div>

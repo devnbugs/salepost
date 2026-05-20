@@ -61,14 +61,14 @@ export default function CashTransactionsIndex({ transactions, filters, direction
                         <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
                             <div>
                                 <p className="text-lg font-semibold">{transaction.transaction_number}</p>
-                                <p className="text-sm text-muted-copy">{transaction.category_name}</p>
+                                <p className="text-sm text-muted-foreground">{transaction.category_name}</p>
                             </div>
                             <Badge variant={transaction.direction === 'inflow' ? 'success' : 'danger'}>
                                 {transaction.direction}
                             </Badge>
                             <div className="text-right">
                                 <p className="font-semibold">{currency(transaction.amount)}</p>
-                                <p className="text-sm text-muted-copy">{transaction.transaction_date}</p>
+                                <p className="text-sm text-muted-foreground">{transaction.transaction_date}</p>
                             </div>
                         </CardContent>
                     </Card>

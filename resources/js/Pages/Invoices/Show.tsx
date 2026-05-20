@@ -41,20 +41,20 @@ export default function InvoicesShow({ invoice, business }: any) {
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {invoice.sale.items.map((item: any) => (
-                            <div key={item.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3">
+                            <div key={item.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
                                 <div>
                                     <p className="font-medium">{item.product?.name}</p>
-                                    <p className="text-sm text-muted-copy">{item.quantity} units</p>
+                                    <p className="text-sm text-muted-foreground">{item.quantity} units</p>
                                 </div>
                                 <span className="font-semibold">{currency(item.total_amount)}</span>
                             </div>
                         ))}
-                        <div className="rounded-2xl border border-base p-4">
+                        <div className="rounded-lg border border-border p-4">
                             <div className="flex justify-between">
                                 <span>Total</span>
                                 <span className="font-semibold">{currency(invoice.total_amount)}</span>
                             </div>
-                            <div className="mt-2 flex justify-between text-muted-copy">
+                            <div className="mt-2 flex justify-between text-muted-foreground">
                                 <span>Balance</span>
                                 <span>{currency(invoice.balance_due)}</span>
                             </div>

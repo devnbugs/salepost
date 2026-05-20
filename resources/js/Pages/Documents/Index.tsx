@@ -25,7 +25,7 @@ export default function DocumentsIndex({ documents, document_types }: any) {
                                 <Link href={route('documents.show', document.id)} className="text-lg font-semibold hover:underline">
                                     {document.title}
                                 </Link>
-                                <p className="text-sm text-muted-copy">{document.reference_number ?? 'No reference'}</p>
+                                <p className="text-sm text-muted-foreground">{document.reference_number ?? 'No reference'}</p>
                             </div>
                             <Badge variant="primary">{document.document_type}</Badge>
                         </CardContent>

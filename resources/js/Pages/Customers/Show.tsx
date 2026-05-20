@@ -32,7 +32,7 @@ export default function CustomersShow({ customer }: any) {
                     </CardHeader>
                     <CardContent>
                         <p>{customer.phone ?? 'No phone'}</p>
-                        <p className="text-muted-copy">{customer.email ?? 'No email'}</p>
+                        <p className="text-muted-foreground">{customer.email ?? 'No email'}</p>
                     </CardContent>
                 </Card>
             </div>
@@ -43,10 +43,10 @@ export default function CustomersShow({ customer }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {customer.sales.map((sale: any) => (
-                        <div key={sale.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3">
+                        <div key={sale.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
                             <div>
                                 <p className="font-medium">{sale.sale_number}</p>
-                                <p className="text-sm text-muted-copy">{sale.sale_date}</p>
+                                <p className="text-sm text-muted-foreground">{sale.sale_date}</p>
                             </div>
                             <div className="text-right">
                                 <p className="font-semibold">{currency(sale.total_amount)}</p>

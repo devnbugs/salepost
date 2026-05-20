@@ -1,20 +1,40 @@
-*.log
-*.deb
-.DS_Store
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
 .env.backup
 .env.production
 .phpactor.json
 .phpunit.result.cache
+.DS_Store
+*.log
+Thumbs.db
+
+# VS Code
+/.vscode
 /.fleet
 /.idea
 /.nova
 /.phpunit.cache
-/.vscode
 /.zed
-/auth.json
-/storage/pail
-/vendor
+
+# MacOS
+.DS_Store
+
+# PHPUnit
+.phpunit.result.cache
+
+# Homestead
 Homestead.json
 Homestead.yaml
-Thumbs.db
-node_modules
+
+# Sail
+.env.sail
+
+# Local configuration
+.env.*
+!.env.example
+.ipynb_checkpoints

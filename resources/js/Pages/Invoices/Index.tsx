@@ -35,7 +35,7 @@ export default function InvoicesIndex({ invoices, filters }: any) {
                                 <Link href={route('invoices.show', invoice.id)} className="text-lg font-semibold hover:underline">
                                     {invoice.invoice_number}
                                 </Link>
-                                <p className="text-sm text-muted-copy">{invoice.customer?.name ?? 'Walk-in customer'}</p>
+                                <p className="text-sm text-muted-foreground">{invoice.customer?.name ?? 'Walk-in customer'}</p>
                             </div>
                             <div className="flex gap-2">
                                 <Badge variant={invoice.balance_due > 0 ? 'warning' : 'success'}>
@@ -44,7 +44,7 @@ export default function InvoicesIndex({ invoices, filters }: any) {
                             </div>
                             <div className="text-right">
                                 <p className="font-semibold">{currency(invoice.total_amount)}</p>
-                                <p className="text-sm text-muted-copy">{invoice.invoice_date}</p>
+                                <p className="text-sm text-muted-foreground">{invoice.invoice_date}</p>
                             </div>
                         </CardContent>
                     </Card>

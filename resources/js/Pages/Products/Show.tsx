@@ -36,22 +36,22 @@ export default function ProductsShow({ product }: any) {
                         <CardTitle>Overview</CardTitle>
                     </CardHeader>
                     <CardContent className="grid gap-4 md:grid-cols-2">
-                        <div className="rounded-2xl bg-muted-panel p-4">
-                            <p className="text-sm text-muted-copy">Selling Price</p>
+                        <div className="rounded-lg bg-muted p-4">
+                            <p className="text-sm text-muted-foreground">Selling Price</p>
                             <p className="mt-1 text-xl font-semibold">{currency(product.selling_price)}</p>
                         </div>
-                        <div className="rounded-2xl bg-muted-panel p-4">
-                            <p className="text-sm text-muted-copy">Current Stock</p>
+                        <div className="rounded-lg bg-muted p-4">
+                            <p className="text-sm text-muted-foreground">Current Stock</p>
                             <p className="mt-1 text-xl font-semibold">
                                 {product.current_stock} {product.unit_of_measure}
                             </p>
                         </div>
-                        <div className="rounded-2xl bg-muted-panel p-4">
-                            <p className="text-sm text-muted-copy">Reorder Level</p>
+                        <div className="rounded-lg bg-muted p-4">
+                            <p className="text-sm text-muted-foreground">Reorder Level</p>
                             <p className="mt-1 text-xl font-semibold">{product.reorder_level}</p>
                         </div>
-                        <div className="rounded-2xl bg-muted-panel p-4">
-                            <p className="text-sm text-muted-copy">Status</p>
+                        <div className="rounded-lg bg-muted p-4">
+                            <p className="text-sm text-muted-foreground">Status</p>
                             <Badge variant={product.current_stock <= product.reorder_level ? 'warning' : 'primary'}>
                                 {product.status}
                             </Badge>
@@ -66,13 +66,13 @@ export default function ProductsShow({ product }: any) {
                     <CardContent>
                         <form onSubmit={submit} className="space-y-3">
                             <input
-                                className="border-base bg-panel w-full rounded-xl border px-3 py-2"
+                                className="border-border bg-card w-full rounded-md border px-3 py-2"
                                 type="number"
                                 value={data.quantity}
                                 onChange={(e) => setData('quantity', Number(e.target.value))}
                             />
                             <select
-                                className="border-base bg-panel w-full rounded-xl border px-3 py-2"
+                                className="border-border bg-card w-full rounded-md border px-3 py-2"
                                 value={data.type}
                                 onChange={(e) => setData('type', e.target.value)}
                             >
@@ -81,7 +81,7 @@ export default function ProductsShow({ product }: any) {
                                 <option value="adjustment_out">Adjustment Out</option>
                             </select>
                             <textarea
-                                className="border-base bg-panel min-h-[100px] w-full rounded-xl border px-3 py-2"
+                                className="border-border bg-card min-h-[100px] w-full rounded-md border px-3 py-2"
                                 value={data.notes}
                                 onChange={(e) => setData('notes', e.target.value)}
                                 placeholder="Reason for adjustment"
@@ -98,14 +98,14 @@ export default function ProductsShow({ product }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {product.stock_movements.map((movement: any) => (
-                        <div key={movement.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3 text-sm">
+                        <div key={movement.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3 text-sm">
                             <div>
                                 <p className="font-medium">{movement.type}</p>
-                                <p className="text-muted-copy">{movement.notes}</p>
+                                <p className="text-muted-foreground">{movement.notes}</p>
                             </div>
                             <div className="text-right">
                                 <p className="font-semibold">{movement.quantity}</p>
-                                <p className="text-muted-copy">{movement.movement_date}</p>
+                                <p className="text-muted-foreground">{movement.movement_date}</p>
                             </div>
                         </div>
                     ))}

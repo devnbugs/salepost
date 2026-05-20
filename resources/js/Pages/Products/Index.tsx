@@ -45,13 +45,13 @@ export default function ProductsIndex({
             <div className="mb-6 grid gap-4 md:grid-cols-3">
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-copy">Total Materials</p>
+                        <p className="text-sm text-muted-foreground">Total Materials</p>
                         <p className="mt-2 text-2xl font-bold">{stats.total}</p>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-copy">Low Stock</p>
+                        <p className="text-sm text-muted-foreground">Low Stock</p>
                         <p className="mt-2 text-2xl font-bold">{stats.low_stock}</p>
                     </CardContent>
                 </Card>
@@ -102,19 +102,19 @@ export default function ProductsIndex({
                                         <Link href={route('products.show', product.id)} className="text-lg font-semibold hover:underline">
                                             {product.name}
                                         </Link>
-                                        <p className="text-sm text-muted-copy">{product.slug}</p>
+                                        <p className="text-sm text-muted-foreground">{product.slug}</p>
                                     </div>
                                     <Badge variant={product.current_stock <= product.reorder_level ? 'warning' : 'primary'}>
                                         {product.status}
                                     </Badge>
                                 </div>
                                 <div className="grid grid-cols-2 gap-3 text-sm">
-                                    <div className="rounded-2xl bg-muted-panel p-3">
-                                        <p className="text-muted-copy">Selling Price</p>
+                                    <div className="rounded-lg bg-muted p-3">
+                                        <p className="text-muted-foreground">Selling Price</p>
                                         <p className="mt-1 font-semibold">{currency(product.selling_price)}</p>
                                     </div>
-                                    <div className="rounded-2xl bg-muted-panel p-3">
-                                        <p className="text-muted-copy">Current Stock</p>
+                                    <div className="rounded-lg bg-muted p-3">
+                                        <p className="text-muted-foreground">Current Stock</p>
                                         <p className="mt-1 font-semibold">
                                             {product.current_stock} {product.unit_of_measure}
                                         </p>

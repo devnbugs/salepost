@@ -26,13 +26,13 @@ export default function CustomersIndex({ customers, filters, stats }: any) {
             <div className="mb-6 grid gap-4 md:grid-cols-2">
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-copy">Total Customers</p>
+                        <p className="text-sm text-muted-foreground">Total Customers</p>
                         <p className="mt-2 text-2xl font-bold">{stats.total}</p>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-copy">Outstanding Balance</p>
+                        <p className="text-sm text-muted-foreground">Outstanding Balance</p>
                         <p className="mt-2 text-2xl font-bold">{currency(stats.outstanding_balance)}</p>
                     </CardContent>
                 </Card>
@@ -68,7 +68,7 @@ export default function CustomersIndex({ customers, filters, stats }: any) {
                                         <Link href={route('customers.show', customer.id)} className="text-lg font-semibold hover:underline">
                                             {customer.name}
                                         </Link>
-                                        <p className="text-sm text-muted-copy">{customer.phone ?? customer.email}</p>
+                                        <p className="text-sm text-muted-foreground">{customer.phone ?? customer.email}</p>
                                     </div>
                                     <span className="text-sm font-semibold">{currency(customer.balance)}</span>
                                 </div>

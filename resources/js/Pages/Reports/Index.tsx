@@ -61,7 +61,7 @@ export default function ReportsIndex({ summary, daily_sales, product_movement, f
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {product_movement.slice(0, 8).map((product: any) => (
-                            <div key={product.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3 text-sm">
+                            <div key={product.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3 text-sm">
                                 <span>{product.name}</span>
                                 <span>
                                     Sold {product.sold_quantity ?? 0} / Bought {product.purchased_quantity ?? 0}

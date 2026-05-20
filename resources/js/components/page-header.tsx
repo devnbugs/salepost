@@ -14,7 +14,7 @@ export default function PageHeader({
             <div className="space-y-1">
                 <h1 className="text-3xl font-bold">{title}</h1>
                 {description ? (
-                    <p className="max-w-2xl text-sm text-muted-copy">
+                    <p className="max-w-2xl text-sm text-muted-foreground">
                         {description}
                     </p>
                 ) : null}

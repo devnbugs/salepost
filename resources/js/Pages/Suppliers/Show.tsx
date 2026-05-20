@@ -25,10 +25,10 @@ export default function SuppliersShow({ supplier }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {supplier.purchases.map((purchase: any) => (
-                        <div key={purchase.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3">
+                        <div key={purchase.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
                             <div>
                                 <p className="font-medium">{purchase.purchase_number}</p>
-                                <p className="text-sm text-muted-copy">{purchase.purchase_date}</p>
+                                <p className="text-sm text-muted-foreground">{purchase.purchase_date}</p>
                             </div>
                             <div className="text-right">
                                 <p className="font-semibold">{currency(purchase.total_amount)}</p>

@@ -15,15 +15,15 @@ export default function PurchasesShow({ purchase }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {purchase.items.map((item: any) => (
-                        <div key={item.id} className="flex items-center justify-between rounded-2xl bg-muted-panel px-4 py-3">
+                        <div key={item.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
                             <div>
                                 <p className="font-medium">{item.product?.name}</p>
-                                <p className="text-sm text-muted-copy">{item.quantity}</p>
+                                <p className="text-sm text-muted-foreground">{item.quantity}</p>
                             </div>
                             <span className="font-semibold">{currency(item.total_cost)}</span>
                         </div>
                     ))}
-                    <div className="flex items-center justify-between rounded-2xl border border-base p-4">
+                    <div className="flex items-center justify-between rounded-lg border border-border p-4">
                         <span>Total</span>
                         <div className="text-right">
                             <p className="font-semibold">{currency(purchase.total_amount)}</p>

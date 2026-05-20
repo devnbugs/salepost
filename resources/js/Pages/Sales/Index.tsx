@@ -60,7 +60,7 @@ export default function SalesIndex({ sales, filters, status_options }: any) {
                                 <Link href={route('sales.show', sale.id)} className="text-lg font-semibold hover:underline">
                                     {sale.sale_number}
                                 </Link>
-                                <p className="text-sm text-muted-copy">{sale.customer?.name ?? 'Walk-in customer'}</p>
+                                <p className="text-sm text-muted-foreground">{sale.customer?.name ?? 'Walk-in customer'}</p>
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 <Badge variant="primary">{sale.status}</Badge>
@@ -70,7 +70,7 @@ export default function SalesIndex({ sales, filters, status_options }: any) {
                             </div>
                             <div className="text-right">
                                 <p className="font-semibold">{currency(sale.total_amount)}</p>
-                                <p className="text-sm text-muted-copy">{sale.sale_date}</p>
+                                <p className="text-sm text-muted-foreground">{sale.sale_date}</p>
                             </div>
                         </CardContent>
                     </Card>

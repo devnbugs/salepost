@@ -26,14 +26,14 @@ export default function PurchasesIndex({ purchases }: any) {
                                 <Link href={route('purchases.show', purchase.id)} className="text-lg font-semibold hover:underline">
                                     {purchase.purchase_number}
                                 </Link>
-                                <p className="text-sm text-muted-copy">{purchase.supplier?.name}</p>
+                                <p className="text-sm text-muted-foreground">{purchase.supplier?.name}</p>
                             </div>
                             <Badge variant={purchase.balance_due > 0 ? 'warning' : 'success'}>
                                 {purchase.payment_status}
                             </Badge>
                             <div className="text-right">
                                 <p className="font-semibold">{currency(purchase.total_amount)}</p>
-                                <p className="text-sm text-muted-copy">{purchase.purchase_date}</p>
+                                <p className="text-sm text-muted-foreground">{purchase.purchase_date}</p>
                             </div>
                         </CardContent>
                     </Card>

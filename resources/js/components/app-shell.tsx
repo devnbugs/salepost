@@ -59,13 +59,13 @@ export default function AppShell({
                 <div className="flex min-h-screen">
                     <aside
                         className={cn(
-                            'fixed inset-y-0 left-0 z-40 w-72 border-r border-base bg-panel p-5 transition-transform lg:static lg:translate-x-0',
+                            'fixed inset-y-0 left-0 z-40 w-72 border-r border-border bg-card p-5 transition-transform lg:static lg:translate-x-0',
                             open ? 'translate-x-0' : '-translate-x-full',
                         )}
                     >
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className="text-xs uppercase tracking-[0.25em] text-muted-copy">
+                                <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
                                     Salepost
                                 </p>
                                 <h1 className="text-xl font-bold">
@@ -92,10 +92,10 @@ export default function AppShell({
                                         key={item.href}
                                         href={route(item.href)}
                                         className={cn(
-                                            'flex items-center justify-between rounded-2xl px-3 py-3 text-sm transition',
+                                            'flex items-center justify-between rounded-lg px-3 py-3 text-sm transition',
                                             active
                                                 ? 'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]'
-                                                : 'hover:bg-muted-panel',
+                                                : 'hover:bg-muted',
                                         )}
                                     >
                                         <span className="flex items-center gap-3">
@@ -110,7 +110,7 @@ export default function AppShell({
                     </aside>
 
                     <div className="flex min-h-screen flex-1 flex-col lg:pl-0">
-                        <header className="sticky top-0 z-30 border-b border-base bg-[hsl(var(--background))]/80 backdrop-blur">
+                        <header className="sticky top-0 z-30 border-b border-border bg-[hsl(var(--background))]/80 backdrop-blur">
                             <div className="page-shell flex items-center justify-between py-4">
                                 <div className="flex items-center gap-3">
                                     <Button
@@ -122,7 +122,7 @@ export default function AppShell({
                                         <Menu className="h-4 w-4" />
                                     </Button>
                                     <div>
-                                        <p className="text-xs uppercase tracking-[0.24em] text-muted-copy">
+                                        <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
                                             Internal Operations
                                         </p>
                                         <h2 className="text-lg font-semibold">{title}</h2>
@@ -131,9 +131,9 @@ export default function AppShell({
 
                                 <div className="flex items-center gap-3">
                                     <ThemeToggle />
-                                    <div className="hidden rounded-2xl border border-base bg-panel px-4 py-2 text-right sm:block">
+                                    <div className="hidden rounded-lg border border-border bg-card px-4 py-2 text-right sm:block">
                                         <p className="text-sm font-medium">{user?.name}</p>
-                                        <p className="text-xs text-muted-copy">
+                                        <p className="text-xs text-muted-foreground">
                                             {user?.roles?.join(', ') || 'Staff'}
                                         </p>
                                     </div>
