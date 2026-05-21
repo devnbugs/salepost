@@ -25,19 +25,29 @@ export default function SalesShow({ sale }: any) {
                 <Card>
                     <CardContent className="p-5">
                         <p className="text-sm text-muted-foreground">Total</p>
-                        <p className="mt-2 text-2xl font-bold">{currency(sale.total_amount)}</p>
+                        <p className="mt-2 text-2xl font-bold">
+                            {currency(sale.total_amount)}
+                        </p>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-foreground">Amount Paid</p>
-                        <p className="mt-2 text-2xl font-bold">{currency(sale.amount_paid)}</p>
+                        <p className="text-sm text-muted-foreground">
+                            Amount Paid
+                        </p>
+                        <p className="mt-2 text-2xl font-bold">
+                            {currency(sale.amount_paid)}
+                        </p>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="space-y-2 p-5">
                         <Badge variant="primary">{sale.status}</Badge>
-                        <Badge variant={sale.balance_due > 0 ? 'warning' : 'success'}>
+                        <Badge
+                            variant={
+                                sale.balance_due > 0 ? 'warning' : 'success'
+                            }
+                        >
                             {sale.payment_status}
                         </Badge>
                     </CardContent>
@@ -50,14 +60,22 @@ export default function SalesShow({ sale }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {sale.items.map((item: any) => (
-                        <div key={item.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
+                        <div
+                            key={item.id}
+                            className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
+                        >
                             <div>
-                                <p className="font-medium">{item.product?.name}</p>
+                                <p className="font-medium">
+                                    {item.product?.name}
+                                </p>
                                 <p className="text-sm text-muted-foreground">
-                                    {item.quantity} x {currency(item.unit_price)}
+                                    {item.quantity} x{' '}
+                                    {currency(item.unit_price)}
                                 </p>
                             </div>
-                            <span className="font-semibold">{currency(item.total_amount)}</span>
+                            <span className="font-semibold">
+                                {currency(item.total_amount)}
+                            </span>
                         </div>
                     ))}
                 </CardContent>

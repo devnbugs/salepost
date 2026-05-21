@@ -33,34 +33,70 @@ export default function CustomersForm({ customer, branches }: any) {
             <PageHeader title={customer ? 'Edit Customer' : 'Add Customer'} />
             <Card>
                 <CardContent className="p-6">
-                    <form onSubmit={submit} className="grid gap-4 md:grid-cols-2">
+                    <form
+                        onSubmit={submit}
+                        className="grid gap-4 md:grid-cols-2"
+                    >
                         <div>
                             <Label>Name</Label>
-                            <Input value={data.name} onChange={(e) => setData('name', e.target.value)} />
+                            <Input
+                                value={data.name}
+                                onChange={(e) =>
+                                    setData('name', e.target.value)
+                                }
+                            />
                             <FormError message={errors.name} />
                         </div>
                         <div>
                             <Label>Phone</Label>
-                            <Input value={data.phone} onChange={(e) => setData('phone', e.target.value)} />
+                            <Input
+                                value={data.phone}
+                                onChange={(e) =>
+                                    setData('phone', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Email</Label>
-                            <Input type="email" value={data.email} onChange={(e) => setData('email', e.target.value)} />
+                            <Input
+                                type="email"
+                                value={data.email}
+                                onChange={(e) =>
+                                    setData('email', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Company</Label>
-                            <Input value={data.company_name} onChange={(e) => setData('company_name', e.target.value)} />
+                            <Input
+                                value={data.company_name}
+                                onChange={(e) =>
+                                    setData('company_name', e.target.value)
+                                }
+                            />
                         </div>
                         <div className="md:col-span-2">
                             <Label>Address</Label>
-                            <Input value={data.address} onChange={(e) => setData('address', e.target.value)} />
+                            <Input
+                                value={data.address}
+                                onChange={(e) =>
+                                    setData('address', e.target.value)
+                                }
+                            />
                         </div>
                         <div className="md:col-span-2">
                             <Label>Notes</Label>
-                            <Textarea value={data.notes} onChange={(e) => setData('notes', e.target.value)} />
+                            <Textarea
+                                value={data.notes}
+                                onChange={(e) =>
+                                    setData('notes', e.target.value)
+                                }
+                            />
                         </div>
                         <div className="md:col-span-2">
-                            <Button disabled={processing}>{customer ? 'Update Customer' : 'Save Customer'}</Button>
+                            <Button disabled={processing}>
+                                {customer ? 'Update Customer' : 'Save Customer'}
+                            </Button>
                         </div>
                     </form>
                 </CardContent>

@@ -1,9 +1,9 @@
 import AppShell from '@/components/app-shell';
+import PageHeader from '@/components/page-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import PageHeader from '@/components/page-header';
 import { currency } from '@/lib/utils';
 import { useForm } from '@inertiajs/react';
 
@@ -24,10 +24,19 @@ export default function InvoicesShow({ invoice, business }: any) {
                 description={`${business.business_name} invoice record`}
                 actions={
                     <div className="flex gap-2">
-                        <Button variant="outline" onClick={() => window.print()}>
+                        <Button
+                            variant="outline"
+                            onClick={() => window.print()}
+                        >
                             Print
                         </Button>
-                        <Button onClick={() => window.location.assign(route('invoices.download', invoice.id))}>
+                        <Button
+                            onClick={() =>
+                                window.location.assign(
+                                    route('invoices.download', invoice.id),
+                                )
+                            }
+                        >
                             Download PDF
                         </Button>
                     </div>
@@ -41,18 +50,29 @@ export default function InvoicesShow({ invoice, business }: any) {
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {invoice.sale.items.map((item: any) => (
-                            <div key={item.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
+                            <div
+                                key={item.id}
+                                className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
+                            >
                                 <div>
-                                    <p className="font-medium">{item.product?.name}</p>
-                                    <p className="text-sm text-muted-foreground">{item.quantity} units</p>
+                                    <p className="font-medium">
+                                        {item.product?.name}
+                                    </p>
+                                    <p className="text-sm text-muted-foreground">
+                                        {item.quantity} units
+                                    </p>
                                 </div>
-                                <span className="font-semibold">{currency(item.total_amount)}</span>
+                                <span className="font-semibold">
+                                    {currency(item.total_amount)}
+                                </span>
                             </div>
                         ))}
                         <div className="rounded-lg border border-border p-4">
                             <div className="flex justify-between">
                                 <span>Total</span>
-                                <span className="font-semibold">{currency(invoice.total_amount)}</span>
+                                <span className="font-semibold">
+                                    {currency(invoice.total_amount)}
+                                </span>
                             </div>
                             <div className="mt-2 flex justify-between text-muted-foreground">
                                 <span>Balance</span>
@@ -72,7 +92,12 @@ export default function InvoicesShow({ invoice, business }: any) {
                             <Input
                                 type="number"
                                 value={paymentForm.data.amount}
-                                onChange={(e) => paymentForm.setData('amount', e.target.value)}
+                                onChange={(e) =>
+                                    paymentForm.setData(
+                                        'amount',
+                                        e.target.value,
+                                    )
+                                }
                             />
                         </div>
                         <div>
@@ -80,17 +105,31 @@ export default function InvoicesShow({ invoice, business }: any) {
                             <Input
                                 type="date"
                                 value={paymentForm.data.payment_date}
-                                onChange={(e) => paymentForm.setData('payment_date', e.target.value)}
+                                onChange={(e) =>
+                                    paymentForm.setData(
+                                        'payment_date',
+                                        e.target.value,
+                                    )
+                                }
                             />
                         </div>
                         <div>
                             <Label>Reference Number</Label>
                             <Input
                                 value={paymentForm.data.reference_number}
-                                onChange={(e) => paymentForm.setData('reference_number', e.target.value)}
+                                onChange={(e) =>
+                                    paymentForm.setData(
+                                        'reference_number',
+                                        e.target.value,
+                                    )
+                                }
                             />
                         </div>
-                        <Button onClick={() => paymentForm.post(route('payments.store'))}>
+                        <Button
+                            onClick={() =>
+                                paymentForm.post(route('payments.store'))
+                            }
+                        >
                             Save Payment
                         </Button>
                     </CardContent>

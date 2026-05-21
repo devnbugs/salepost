@@ -26,14 +26,20 @@ export default function SuppliersIndex({ suppliers, filters, stats }: any) {
             <div className="mb-6 grid gap-4 md:grid-cols-2">
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-foreground">Total Suppliers</p>
+                        <p className="text-sm text-muted-foreground">
+                            Total Suppliers
+                        </p>
                         <p className="mt-2 text-2xl font-bold">{stats.total}</p>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="p-5">
-                        <p className="text-sm text-muted-foreground">Outstanding Balance</p>
-                        <p className="mt-2 text-2xl font-bold">{currency(stats.outstanding_balance)}</p>
+                        <p className="text-sm text-muted-foreground">
+                            Outstanding Balance
+                        </p>
+                        <p className="mt-2 text-2xl font-bold">
+                            {currency(stats.outstanding_balance)}
+                        </p>
                     </CardContent>
                 </Card>
             </div>
@@ -47,7 +53,11 @@ export default function SuppliersIndex({ suppliers, filters, stats }: any) {
                         }}
                         className="flex gap-3"
                     >
-                        <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search suppliers" />
+                        <Input
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            placeholder="Search suppliers"
+                        />
                         <Button type="submit">Search</Button>
                     </form>
                 </CardContent>
@@ -65,12 +75,22 @@ export default function SuppliersIndex({ suppliers, filters, stats }: any) {
                             <CardContent className="p-5">
                                 <div className="flex items-start justify-between">
                                     <div>
-                                        <Link href={route('suppliers.show', supplier.id)} className="text-lg font-semibold hover:underline">
+                                        <Link
+                                            href={route(
+                                                'suppliers.show',
+                                                supplier.id,
+                                            )}
+                                            className="text-lg font-semibold hover:underline"
+                                        >
                                             {supplier.name}
                                         </Link>
-                                        <p className="text-sm text-muted-foreground">{supplier.phone ?? supplier.email}</p>
+                                        <p className="text-sm text-muted-foreground">
+                                            {supplier.phone ?? supplier.email}
+                                        </p>
                                     </div>
-                                    <span className="text-sm font-semibold">{currency(supplier.balance)}</span>
+                                    <span className="text-sm font-semibold">
+                                        {currency(supplier.balance)}
+                                    </span>
                                 </div>
                             </CardContent>
                         </Card>

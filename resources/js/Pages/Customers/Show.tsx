@@ -11,7 +11,10 @@ export default function CustomersShow({ customer }: any) {
         <AppShell title={customer.name}>
             <PageHeader
                 title={customer.name}
-                description={customer.company_name ?? 'Customer account overview and transaction history.'}
+                description={
+                    customer.company_name ??
+                    'Customer account overview and transaction history.'
+                }
                 actions={
                     <Link href={route('customers.edit', customer.id)}>
                         <Button>Edit</Button>
@@ -24,7 +27,9 @@ export default function CustomersShow({ customer }: any) {
                     <CardHeader>
                         <CardTitle>Balance</CardTitle>
                     </CardHeader>
-                    <CardContent className="text-2xl font-bold">{currency(customer.balance)}</CardContent>
+                    <CardContent className="text-2xl font-bold">
+                        {currency(customer.balance)}
+                    </CardContent>
                 </Card>
                 <Card>
                     <CardHeader>
@@ -32,7 +37,9 @@ export default function CustomersShow({ customer }: any) {
                     </CardHeader>
                     <CardContent>
                         <p>{customer.phone ?? 'No phone'}</p>
-                        <p className="text-muted-foreground">{customer.email ?? 'No email'}</p>
+                        <p className="text-muted-foreground">
+                            {customer.email ?? 'No email'}
+                        </p>
                     </CardContent>
                 </Card>
             </div>
@@ -43,14 +50,29 @@ export default function CustomersShow({ customer }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {customer.sales.map((sale: any) => (
-                        <div key={sale.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
+                        <div
+                            key={sale.id}
+                            className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
+                        >
                             <div>
-                                <p className="font-medium">{sale.sale_number}</p>
-                                <p className="text-sm text-muted-foreground">{sale.sale_date}</p>
+                                <p className="font-medium">
+                                    {sale.sale_number}
+                                </p>
+                                <p className="text-sm text-muted-foreground">
+                                    {sale.sale_date}
+                                </p>
                             </div>
                             <div className="text-right">
-                                <p className="font-semibold">{currency(sale.total_amount)}</p>
-                                <Badge variant={sale.balance_due > 0 ? 'warning' : 'success'}>
+                                <p className="font-semibold">
+                                    {currency(sale.total_amount)}
+                                </p>
+                                <Badge
+                                    variant={
+                                        sale.balance_due > 0
+                                            ? 'warning'
+                                            : 'success'
+                                    }
+                                >
                                     {sale.payment_status}
                                 </Badge>
                             </div>

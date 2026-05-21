@@ -24,6 +24,8 @@ class User extends Authenticatable
         'phone',
         'job_title',
         'avatar_path',
+        'google_id',
+        'avatar',
         'theme_preference',
         'is_active',
         'two_factor_enabled',

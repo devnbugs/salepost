@@ -12,7 +12,6 @@ import {
     ArrowDownCircle,
     ArrowUpCircle,
     Boxes,
-    Receipt,
 } from 'lucide-react';
 import { useState } from 'react';
 import {
@@ -54,9 +53,20 @@ export default function Dashboard(props: DashboardProps) {
                 title="Scrap Operations Dashboard"
                 description="Monitor sales, cash movement, invoices, and stock levels across the business."
                 actions={
-                    <form onSubmit={submitFilters} className="flex flex-col gap-2 sm:flex-row">
-                        <Input type="date" value={from} onChange={(e) => setFrom(e.target.value)} />
-                        <Input type="date" value={to} onChange={(e) => setTo(e.target.value)} />
+                    <form
+                        onSubmit={submitFilters}
+                        className="flex flex-col gap-2 sm:flex-row"
+                    >
+                        <Input
+                            type="date"
+                            value={from}
+                            onChange={(e) => setFrom(e.target.value)}
+                        />
+                        <Input
+                            type="date"
+                            value={to}
+                            onChange={(e) => setTo(e.target.value)}
+                        />
                         <Button type="submit">Apply</Button>
                     </form>
                 }
@@ -93,11 +103,19 @@ export default function Dashboard(props: DashboardProps) {
                     <CardContent className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <LineChart data={props.sales_by_day}>
-                                <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                                <CartesianGrid
+                                    strokeDasharray="3 3"
+                                    opacity={0.2}
+                                />
                                 <XAxis dataKey="label" />
                                 <YAxis />
                                 <Tooltip />
-                                <Line type="monotone" dataKey="total" stroke="#0f766e" strokeWidth={3} />
+                                <Line
+                                    type="monotone"
+                                    dataKey="total"
+                                    stroke="#0f766e"
+                                    strokeWidth={3}
+                                />
                             </LineChart>
                         </ResponsiveContainer>
                     </CardContent>
@@ -110,11 +128,18 @@ export default function Dashboard(props: DashboardProps) {
                     <CardContent className="h-80">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={props.sales_by_product}>
-                                <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                                <CartesianGrid
+                                    strokeDasharray="3 3"
+                                    opacity={0.2}
+                                />
                                 <XAxis dataKey="label" />
                                 <YAxis />
                                 <Tooltip />
-                                <Bar dataKey="total" fill="#f59e0b" radius={[8, 8, 0, 0]} />
+                                <Bar
+                                    dataKey="total"
+                                    fill="#f59e0b"
+                                    radius={[8, 8, 0, 0]}
+                                />
                             </BarChart>
                         </ResponsiveContainer>
                     </CardContent>
@@ -133,14 +158,25 @@ export default function Dashboard(props: DashboardProps) {
                                 className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
                             >
                                 <div>
-                                    <p className="font-medium">{invoice.invoice_number}</p>
+                                    <p className="font-medium">
+                                        {invoice.invoice_number}
+                                    </p>
                                     <p className="text-sm text-muted-foreground">
-                                        {invoice.customer?.name ?? 'Walk-in customer'}
+                                        {invoice.customer?.name ??
+                                            'Walk-in customer'}
                                     </p>
                                 </div>
                                 <div className="text-right">
-                                    <p className="font-semibold">{currency(invoice.total_amount)}</p>
-                                    <Badge variant={invoice.balance_due > 0 ? 'warning' : 'success'}>
+                                    <p className="font-semibold">
+                                        {currency(invoice.total_amount)}
+                                    </p>
+                                    <Badge
+                                        variant={
+                                            invoice.balance_due > 0
+                                                ? 'warning'
+                                                : 'success'
+                                        }
+                                    >
                                         {invoice.status}
                                     </Badge>
                                 </div>
@@ -160,14 +196,25 @@ export default function Dashboard(props: DashboardProps) {
                                 className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
                             >
                                 <div>
-                                    <p className="font-medium">{transaction.transaction_number}</p>
+                                    <p className="font-medium">
+                                        {transaction.transaction_number}
+                                    </p>
                                     <p className="text-sm text-muted-foreground">
-                                        {transaction.category_name ?? 'General transaction'}
+                                        {transaction.category_name ??
+                                            'General transaction'}
                                     </p>
                                 </div>
                                 <div className="text-right">
-                                    <p className="font-semibold">{currency(transaction.amount)}</p>
-                                    <Badge variant={transaction.direction === 'inflow' ? 'success' : 'danger'}>
+                                    <p className="font-semibold">
+                                        {currency(transaction.amount)}
+                                    </p>
+                                    <Badge
+                                        variant={
+                                            transaction.direction === 'inflow'
+                                                ? 'success'
+                                                : 'danger'
+                                        }
+                                    >
                                         {transaction.direction}
                                     </Badge>
                                 </div>
@@ -184,9 +231,14 @@ export default function Dashboard(props: DashboardProps) {
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {props.top_customers.map((customer) => (
-                            <div key={customer.label} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
+                            <div
+                                key={customer.label}
+                                className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
+                            >
                                 <span>{customer.label}</span>
-                                <span className="font-semibold">{currency(customer.total)}</span>
+                                <span className="font-semibold">
+                                    {currency(customer.total)}
+                                </span>
                             </div>
                         ))}
                     </CardContent>
@@ -198,13 +250,17 @@ export default function Dashboard(props: DashboardProps) {
                     </CardHeader>
                     <CardContent className="space-y-3">
                         {props.low_stock_products.map((product) => (
-                            <div key={product.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
+                            <div
+                                key={product.id}
+                                className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
+                            >
                                 <div className="flex items-center gap-3">
                                     <Boxes className="h-4 w-4 text-muted-foreground" />
                                     <span>{product.name}</span>
                                 </div>
                                 <span className="text-sm text-muted-foreground">
-                                    {product.current_stock} / {product.reorder_level}
+                                    {product.current_stock} /{' '}
+                                    {product.reorder_level}
                                 </span>
                             </div>
                         ))}

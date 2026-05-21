@@ -6,8 +6,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { PageProps } from '@/types';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { createRoot } from 'react-dom/client';
 import { createElement } from 'react';
+import { createRoot } from 'react-dom/client';
 import { Toaster } from 'sonner';
 
 const appName = import.meta.env.VITE_APP_NAME || 'AS Mai-Brass';
@@ -26,40 +26,13 @@ createInertiaApp({
         root.render(
             <ThemeProvider
                 attribute="class"
-                defaultTheme={String(pageProps.settings?.theme?.default_theme ?? 'system')}
+                defaultTheme={String(
+                    pageProps.settings?.theme?.default_theme ?? 'system',
+                )}
                 enableSystem
                 storageKey="salepost-theme"
             >
-                <App {...props}>
-                    {({ Component, props: currentPageProps, key }) => {
-                        const page = <Component key={key} {...currentPageProps} />;
-                        const layout = Component.layout as any;
-
-                        const renderedPage = (() => {
-                            if (typeof layout === 'function') {
-                                return layout(page);
-                            }
-
-                            if (Array.isArray(layout)) {
-                                return [...layout, page]
-                                    .reverse()
-                                    .reduce(
-                                        (children: any, Layout: any) =>
-                                            createElement(Layout, { children, ...currentPageProps }),
-                                    );
-                            }
-
-                            return page;
-                        })();
-
-                        return (
-                            <>
-                                <FlashToast />
-                                {renderedPage}
-                            </>
-                        );
-                    }}
-                </App>
+                <App {...props} />
                 <Toaster richColors position="top-right" />
             </ThemeProvider>,
         );

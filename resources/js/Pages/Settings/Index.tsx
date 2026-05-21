@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select } from '@/components/ui/select';
+import { NativeSelect } from '@/components/ui/native-select';
 import { useForm } from '@inertiajs/react';
 
 export default function SettingsIndex({ business, theme }: any) {
@@ -37,45 +37,87 @@ export default function SettingsIndex({ business, theme }: any) {
                     >
                         <div>
                             <Label>Business Name</Label>
-                            <Input value={data.business_name} onChange={(e) => setData('business_name', e.target.value)} />
+                            <Input
+                                value={data.business_name}
+                                onChange={(e) =>
+                                    setData('business_name', e.target.value)
+                                }
+                            />
                             <FormError message={errors.business_name} />
                         </div>
                         <div>
                             <Label>Invoice Prefix</Label>
-                            <Input value={data.invoice_prefix} onChange={(e) => setData('invoice_prefix', e.target.value)} />
+                            <Input
+                                value={data.invoice_prefix}
+                                onChange={(e) =>
+                                    setData('invoice_prefix', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Phone</Label>
-                            <Input value={data.phone} onChange={(e) => setData('phone', e.target.value)} />
+                            <Input
+                                value={data.phone}
+                                onChange={(e) =>
+                                    setData('phone', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Email</Label>
-                            <Input value={data.email} onChange={(e) => setData('email', e.target.value)} />
+                            <Input
+                                value={data.email}
+                                onChange={(e) =>
+                                    setData('email', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Currency</Label>
-                            <Input value={data.currency} onChange={(e) => setData('currency', e.target.value)} />
+                            <Input
+                                value={data.currency}
+                                onChange={(e) =>
+                                    setData('currency', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Default Theme</Label>
-                            <Select value={data.default_theme} onChange={(e) => setData('default_theme', e.target.value)}>
+                            <NativeSelect
+                                value={data.default_theme}
+                                onChange={(e) =>
+                                    setData('default_theme', e.target.value)
+                                }
+                            >
                                 <option value="system">System</option>
                                 <option value="light">Light</option>
                                 <option value="dark">Dark</option>
-                            </Select>
+                            </NativeSelect>
                         </div>
                         <div className="md:col-span-2">
                             <Label>Business Address</Label>
-                            <Input value={data.business_address} onChange={(e) => setData('business_address', e.target.value)} />
+                            <Input
+                                value={data.business_address}
+                                onChange={(e) =>
+                                    setData('business_address', e.target.value)
+                                }
+                            />
                         </div>
-                        <div className="md:col-span-2 flex items-center gap-3">
+                        <div className="flex items-center gap-3 md:col-span-2">
                             <input
                                 id="allow_negative_stock"
                                 type="checkbox"
                                 checked={data.allow_negative_stock}
-                                onChange={(e) => setData('allow_negative_stock', e.target.checked)}
+                                onChange={(e) =>
+                                    setData(
+                                        'allow_negative_stock',
+                                        e.target.checked,
+                                    )
+                                }
                             />
-                            <Label htmlFor="allow_negative_stock">Allow negative stock overrides</Label>
+                            <Label htmlFor="allow_negative_stock">
+                                Allow negative stock overrides
+                            </Label>
                         </div>
                         <div className="md:col-span-2">
                             <Button disabled={processing}>Save Settings</Button>

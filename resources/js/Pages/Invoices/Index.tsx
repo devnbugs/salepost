@@ -12,7 +12,10 @@ export default function InvoicesIndex({ invoices, filters }: any) {
 
     return (
         <AppShell title="Invoices">
-            <PageHeader title="Invoices" description="Track generated invoices, balances, and linked sale records." />
+            <PageHeader
+                title="Invoices"
+                description="Track generated invoices, balances, and linked sale records."
+            />
             <Card className="mb-6">
                 <CardContent className="p-5">
                     <form
@@ -22,7 +25,11 @@ export default function InvoicesIndex({ invoices, filters }: any) {
                         }}
                         className="flex gap-3"
                     >
-                        <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search invoice or customer" />
+                        <Input
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            placeholder="Search invoice or customer"
+                        />
                     </form>
                 </CardContent>
             </Card>
@@ -32,19 +39,35 @@ export default function InvoicesIndex({ invoices, filters }: any) {
                     <Card key={invoice.id}>
                         <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
                             <div>
-                                <Link href={route('invoices.show', invoice.id)} className="text-lg font-semibold hover:underline">
+                                <Link
+                                    href={route('invoices.show', invoice.id)}
+                                    className="text-lg font-semibold hover:underline"
+                                >
                                     {invoice.invoice_number}
                                 </Link>
-                                <p className="text-sm text-muted-foreground">{invoice.customer?.name ?? 'Walk-in customer'}</p>
+                                <p className="text-sm text-muted-foreground">
+                                    {invoice.customer?.name ??
+                                        'Walk-in customer'}
+                                </p>
                             </div>
                             <div className="flex gap-2">
-                                <Badge variant={invoice.balance_due > 0 ? 'warning' : 'success'}>
+                                <Badge
+                                    variant={
+                                        invoice.balance_due > 0
+                                            ? 'warning'
+                                            : 'success'
+                                    }
+                                >
                                     {invoice.status}
                                 </Badge>
                             </div>
                             <div className="text-right">
-                                <p className="font-semibold">{currency(invoice.total_amount)}</p>
-                                <p className="text-sm text-muted-foreground">{invoice.invoice_date}</p>
+                                <p className="font-semibold">
+                                    {currency(invoice.total_amount)}
+                                </p>
+                                <p className="text-sm text-muted-foreground">
+                                    {invoice.invoice_date}
+                                </p>
                             </div>
                         </CardContent>
                     </Card>

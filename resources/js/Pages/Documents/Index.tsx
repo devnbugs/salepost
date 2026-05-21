@@ -22,12 +22,20 @@ export default function DocumentsIndex({ documents, document_types }: any) {
                     <Card key={document.id}>
                         <CardContent className="flex flex-col gap-4 p-5 md:flex-row md:items-center md:justify-between">
                             <div>
-                                <Link href={route('documents.show', document.id)} className="text-lg font-semibold hover:underline">
+                                <Link
+                                    href={route('documents.show', document.id)}
+                                    className="text-lg font-semibold hover:underline"
+                                >
                                     {document.title}
                                 </Link>
-                                <p className="text-sm text-muted-foreground">{document.reference_number ?? 'No reference'}</p>
+                                <p className="text-sm text-muted-foreground">
+                                    {document.reference_number ??
+                                        'No reference'}
+                                </p>
                             </div>
-                            <Badge variant="primary">{document.document_type}</Badge>
+                            <Badge variant="primary">
+                                {document.document_type}
+                            </Badge>
                         </CardContent>
                     </Card>
                 ))}

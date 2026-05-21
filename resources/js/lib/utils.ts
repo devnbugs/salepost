@@ -5,7 +5,10 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
-export function currency(value: number | string | null | undefined, code = 'NGN') {
+export function currency(
+    value: number | string | null | undefined,
+    code = 'NGN',
+) {
     const amount = Number(value ?? 0);
 
     return new Intl.NumberFormat('en-NG', {

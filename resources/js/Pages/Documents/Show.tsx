@@ -10,7 +10,13 @@ export default function DocumentsShow({ document }: any) {
                 title={document.title}
                 description={document.reference_number ?? 'Registered document'}
                 actions={
-                    <Button onClick={() => window.location.assign(route('documents.download', document.id))}>
+                    <Button
+                        onClick={() =>
+                            window.location.assign(
+                                route('documents.download', document.id),
+                            )
+                        }
+                    >
                         Download
                     </Button>
                 }

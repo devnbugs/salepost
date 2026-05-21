@@ -3,6 +3,7 @@ export interface AuthUser {
     branch_id?: number | null;
     name: string;
     email: string;
+    avatar?: string | null;
     phone?: string | null;
     job_title?: string | null;
     theme_preference?: string | null;

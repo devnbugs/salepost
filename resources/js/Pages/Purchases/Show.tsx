@@ -7,7 +7,10 @@ import { currency } from '@/lib/utils';
 export default function PurchasesShow({ purchase }: any) {
     return (
         <AppShell title={purchase.purchase_number}>
-            <PageHeader title={purchase.purchase_number} description={`Supplier: ${purchase.supplier?.name ?? 'Unassigned supplier'}`} />
+            <PageHeader
+                title={purchase.purchase_number}
+                description={`Supplier: ${purchase.supplier?.name ?? 'Unassigned supplier'}`}
+            />
 
             <Card>
                 <CardHeader>
@@ -15,19 +18,36 @@ export default function PurchasesShow({ purchase }: any) {
                 </CardHeader>
                 <CardContent className="space-y-3">
                     {purchase.items.map((item: any) => (
-                        <div key={item.id} className="flex items-center justify-between rounded-lg bg-muted px-4 py-3">
+                        <div
+                            key={item.id}
+                            className="flex items-center justify-between rounded-lg bg-muted px-4 py-3"
+                        >
                             <div>
-                                <p className="font-medium">{item.product?.name}</p>
-                                <p className="text-sm text-muted-foreground">{item.quantity}</p>
+                                <p className="font-medium">
+                                    {item.product?.name}
+                                </p>
+                                <p className="text-sm text-muted-foreground">
+                                    {item.quantity}
+                                </p>
                             </div>
-                            <span className="font-semibold">{currency(item.total_cost)}</span>
+                            <span className="font-semibold">
+                                {currency(item.total_cost)}
+                            </span>
                         </div>
                     ))}
                     <div className="flex items-center justify-between rounded-lg border border-border p-4">
                         <span>Total</span>
                         <div className="text-right">
-                            <p className="font-semibold">{currency(purchase.total_amount)}</p>
-                            <Badge variant={purchase.balance_due > 0 ? 'warning' : 'success'}>
+                            <p className="font-semibold">
+                                {currency(purchase.total_amount)}
+                            </p>
+                            <Badge
+                                variant={
+                                    purchase.balance_due > 0
+                                        ? 'warning'
+                                        : 'success'
+                                }
+                            >
                                 {purchase.payment_status}
                             </Badge>
                         </div>

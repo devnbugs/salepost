@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select } from '@/components/ui/select';
+import { NativeSelect } from '@/components/ui/native-select';
 import { useForm } from '@inertiajs/react';
 
 export default function UsersForm({ user, roles, branches }: any) {
@@ -34,49 +34,91 @@ export default function UsersForm({ user, roles, branches }: any) {
             <PageHeader title={user ? 'Edit User' : 'Add User'} />
             <Card>
                 <CardContent className="p-6">
-                    <form onSubmit={submit} className="grid gap-4 md:grid-cols-2">
+                    <form
+                        onSubmit={submit}
+                        className="grid gap-4 md:grid-cols-2"
+                    >
                         <div>
                             <Label>Name</Label>
-                            <Input value={data.name} onChange={(e) => setData('name', e.target.value)} />
+                            <Input
+                                value={data.name}
+                                onChange={(e) =>
+                                    setData('name', e.target.value)
+                                }
+                            />
                             <FormError message={errors.name} />
                         </div>
                         <div>
                             <Label>Email</Label>
-                            <Input type="email" value={data.email} onChange={(e) => setData('email', e.target.value)} />
+                            <Input
+                                type="email"
+                                value={data.email}
+                                onChange={(e) =>
+                                    setData('email', e.target.value)
+                                }
+                            />
                             <FormError message={errors.email} />
                         </div>
                         <div>
                             <Label>Phone</Label>
-                            <Input value={data.phone} onChange={(e) => setData('phone', e.target.value)} />
+                            <Input
+                                value={data.phone}
+                                onChange={(e) =>
+                                    setData('phone', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Job Title</Label>
-                            <Input value={data.job_title} onChange={(e) => setData('job_title', e.target.value)} />
+                            <Input
+                                value={data.job_title}
+                                onChange={(e) =>
+                                    setData('job_title', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Role</Label>
-                            <Select value={data.role} onChange={(e) => setData('role', e.target.value)}>
+                            <NativeSelect
+                                value={data.role}
+                                onChange={(e) =>
+                                    setData('role', e.target.value)
+                                }
+                            >
                                 {roles.map((role: string) => (
                                     <option key={role} value={role}>
                                         {role}
                                     </option>
                                 ))}
-                            </Select>
+                            </NativeSelect>
                         </div>
                         <div>
                             <Label>Password</Label>
-                            <Input type="password" value={data.password} onChange={(e) => setData('password', e.target.value)} />
+                            <Input
+                                type="password"
+                                value={data.password}
+                                onChange={(e) =>
+                                    setData('password', e.target.value)
+                                }
+                            />
                         </div>
                         <div>
                             <Label>Confirm Password</Label>
                             <Input
                                 type="password"
                                 value={data.password_confirmation}
-                                onChange={(e) => setData('password_confirmation', e.target.value)}
+                                onChange={(e) =>
+                                    setData(
+                                        'password_confirmation',
+                                        e.target.value,
+                                    )
+                                }
                             />
                         </div>
                         <div className="md:col-span-2">
-                            <Button disabled={processing}>{user ? 'Update User' : 'Create User'}</Button>
+                            <Button disabled={processing}>
+                                {user ? 'Update User' : 'Create User'}
+                            </Button>
                         </div>
                     </form>
                 </CardContent>
