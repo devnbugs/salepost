@@ -11,8 +11,7 @@ class DocumentService
 {
     public function __construct(
         private readonly AuditLogService $auditLogService,
-    ) {
-    }
+    ) {}
 
     public function store(array $data, UploadedFile $file, User $user): Document
     {

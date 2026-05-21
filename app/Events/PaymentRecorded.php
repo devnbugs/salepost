@@ -13,6 +13,5 @@ class PaymentRecorded
 
     public function __construct(
         public Payment $payment,
-    ) {
-    }
+    ) {}
 }

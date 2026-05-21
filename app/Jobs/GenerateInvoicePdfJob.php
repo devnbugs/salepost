@@ -15,8 +15,7 @@ class GenerateInvoicePdfJob implements ShouldQueue
 
     public function __construct(
         public int $invoiceId,
-    ) {
-    }
+    ) {}
 
     public function handle(): void
     {

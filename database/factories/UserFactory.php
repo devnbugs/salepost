@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\ThemePreference;
-use App\Models\Branch;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -27,20 +25,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'branch_id' => Branch::factory(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'phone' => '+234'.fake()->numerify('80########'),
-            'job_title' => fake()->jobTitle(),
-            'avatar_path' => null,
-            'theme_preference' => ThemePreference::System->value,
-            'is_active' => true,
-            'two_factor_enabled' => false,
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'last_login_at' => now(),
-            'last_login_ip' => fake()->ipv4(),
         ];
     }
 
@@ -54,10 +43,13 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function inactive(): static
+    public function withTwoFactor(): static
     {
         return $this->state(fn (array $attributes) => [
-            'is_active' => false,
+            'two_factor_secret' => encrypt('secret-key'),
+            'two_factor_recovery_codes' => encrypt(json_encode(['recovery-code-1'])),
+            'two_factor_confirmed_at' => now(),
+            'two_factor_enabled' => true,
         ]);
     }
 }

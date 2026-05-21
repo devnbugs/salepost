@@ -13,6 +13,5 @@ class StockAdjusted
 
     public function __construct(
         public StockMovement $stockMovement,
-    ) {
-    }
+    ) {}
 }

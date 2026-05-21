@@ -13,6 +13,5 @@ class SaleCompleted
 
     public function __construct(
         public Sale $sale,
-    ) {
-    }
+    ) {}
 }

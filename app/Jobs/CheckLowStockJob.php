@@ -15,8 +15,7 @@ class CheckLowStockJob implements ShouldQueue
 
     public function __construct(
         public ?int $branchId = null,
-    ) {
-    }
+    ) {}
 
     public function handle(): void
     {

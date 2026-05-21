@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\InteractsWithTags;
+use Database\Factories\CustomerFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,16 +13,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customer extends Model
 {
-    /** @use HasFactory<\Database\Factories\CustomerFactory> */
+    /** @use HasFactory<CustomerFactory> */
     use HasFactory, InteractsWithTags, SoftDeletes;
 
     protected $fillable = [
         'branch_id',
         'name',
+        'is_corporate',
+        'company_name',
+        'tin',
         'phone',
         'email',
-        'company_name',
         'address',
+        'state',
         'balance',
         'notes',
         'is_active',
@@ -32,6 +36,7 @@ class Customer extends Model
     {
         return [
             'balance' => 'decimal:2',
+            'is_corporate' => 'boolean',
             'is_active' => 'boolean',
             'metadata' => 'array',
         ];
@@ -77,6 +82,7 @@ class Customer extends Model
             $builder
                 ->where('name', 'like', "%{$term}%")
                 ->orWhere('company_name', 'like', "%{$term}%")
+                ->orWhere('tin', 'like', "%{$term}%")
                 ->orWhere('phone', 'like', "%{$term}%")
                 ->orWhere('email', 'like', "%{$term}%");
         });

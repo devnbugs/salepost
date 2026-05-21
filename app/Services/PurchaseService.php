@@ -18,8 +18,7 @@ class PurchaseService
         private readonly InventoryService $inventoryService,
         private readonly PaymentService $paymentService,
         private readonly AuditLogService $auditLogService,
-    ) {
-    }
+    ) {}
 
     public function create(array $data, User $user): Purchase
     {

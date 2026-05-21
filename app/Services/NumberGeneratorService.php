@@ -13,8 +13,7 @@ class NumberGeneratorService
 {
     public function __construct(
         private readonly SettingsService $settingsService,
-    ) {
-    }
+    ) {}
 
     public function nextSaleNumber(?int $branchId = null): string
     {

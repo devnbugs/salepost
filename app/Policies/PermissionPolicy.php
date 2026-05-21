@@ -10,26 +10,26 @@ abstract class PermissionPolicy
 
     public function viewAny(User $user): bool
     {
-        return $user->can("{$this->permissionPrefix}.view");
+        return $user->hasPermission("view_any_{$this->permissionPrefix}");
     }
 
     public function view(User $user, mixed $model): bool
     {
-        return $user->can("{$this->permissionPrefix}.view");
+        return $user->hasPermission("view_{$this->permissionPrefix}");
     }
 
     public function create(User $user): bool
     {
-        return $user->can("{$this->permissionPrefix}.create");
+        return $user->hasPermission("create_{$this->permissionPrefix}");
     }
 
     public function update(User $user, mixed $model): bool
     {
-        return $user->can("{$this->permissionPrefix}.update");
+        return $user->hasPermission("update_{$this->permissionPrefix}");
     }
 
     public function delete(User $user, mixed $model): bool
     {
-        return $user->can("{$this->permissionPrefix}.delete");
+        return $user->hasPermission("delete_{$this->permissionPrefix}");
     }
 }

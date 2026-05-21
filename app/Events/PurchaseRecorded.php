@@ -13,6 +13,5 @@ class PurchaseRecorded
 
     public function __construct(
         public Purchase $purchase,
-    ) {
-    }
+    ) {}
 }

@@ -12,8 +12,7 @@ class CashTransactionService
     public function __construct(
         private readonly NumberGeneratorService $numberGeneratorService,
         private readonly AuditLogService $auditLogService,
-    ) {
-    }
+    ) {}
 
     public function record(array $data, User $user): CashTransaction
     {

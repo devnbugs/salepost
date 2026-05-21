@@ -15,8 +15,7 @@ class LowStockAlertNotification extends Notification implements ShouldQueue
     public function __construct(
         public Collection $products,
         public ?int $branchId = null,
-    ) {
-    }
+    ) {}
 
     public function via(object $notifiable): array
     {

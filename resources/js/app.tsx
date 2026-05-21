@@ -1,43 +1,40 @@
-import '../css/app.css';
-import './bootstrap';
-
-import FlashToast from '@/components/flash-toast';
-import { ThemeProvider } from '@/components/theme-provider';
-import { PageProps } from '@/types';
 import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { createElement } from 'react';
-import { createRoot } from 'react-dom/client';
-import { Toaster } from 'sonner';
+import { Toaster } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { initializeTheme } from '@/hooks/use-appearance';
+import AppLayout from '@/layouts/app-layout';
+import AuthLayout from '@/layouts/auth-layout';
+import SettingsLayout from '@/layouts/settings/layout';
 
-const appName = import.meta.env.VITE_APP_NAME || 'AS Mai-Brass';
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
-    resolve: (name) =>
-        resolvePageComponent(
-            `./Pages/${name}.tsx`,
-            import.meta.glob('./Pages/**/*.tsx'),
-        ),
-    setup({ el, App, props }) {
-        const root = createRoot(el);
-        const pageProps = props.initialPage.props as PageProps;
-
-        root.render(
-            <ThemeProvider
-                attribute="class"
-                defaultTheme={String(
-                    pageProps.settings?.theme?.default_theme ?? 'system',
-                )}
-                enableSystem
-                storageKey="salepost-theme"
-            >
-                <App {...props} />
-                <Toaster richColors position="top-right" />
-            </ThemeProvider>,
+    title: (title) => (title ? `${title} - ${appName}` : appName),
+    layout: (name) => {
+        switch (true) {
+            case name === 'welcome':
+                return null;
+            case name.startsWith('auth/'):
+                return AuthLayout;
+            case name.startsWith('settings/'):
+                return [AppLayout, SettingsLayout];
+            default:
+                return AppLayout;
+        }
+    },
+    strictMode: true,
+    withApp(app) {
+        return (
+            <TooltipProvider delayDuration={0}>
+                {app}
+                <Toaster />
+            </TooltipProvider>
         );
     },
     progress: {
-        color: '#0f766e',
+        color: '#4B5563',
     },
 });
+
+// This will set light / dark mode on load...
+initializeTheme();

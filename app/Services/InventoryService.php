@@ -16,8 +16,7 @@ class InventoryService
     public function __construct(
         private readonly SettingsService $settingsService,
         private readonly AuditLogService $auditLogService,
-    ) {
-    }
+    ) {}
 
     public function adjust(
         Product $product,

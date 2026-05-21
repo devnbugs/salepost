@@ -3,22 +3,25 @@
 namespace App\Models;
 
 use App\Enums\ThemePreference;
-use App\Enums\UserRole;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use Laravel\Fortify\Contracts\PasskeyUser;
+use Laravel\Fortify\PasskeyAuthenticatable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, HasRoles, Notifiable;
+    use HasFactory, Notifiable, PasskeyAuthenticatable, TwoFactorAuthenticatable;
 
     protected $fillable = [
         'branch_id',
+        'role_id',
         'name',
         'email',
         'phone',
@@ -54,6 +57,11 @@ class User extends Authenticatable
         return $this->belongsTo(Branch::class);
     }
 
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public function salesCreated(): HasMany
     {
         return $this->hasMany(Sale::class, 'created_by');
@@ -76,6 +84,22 @@ class User extends Authenticatable
 
     public function isOwner(): bool
     {
-        return $this->hasRole(UserRole::Owner->value);
+        return ($this->role && $this->role->slug === 'super-admin') || strcasecmp($this->job_title ?? '', 'owner') === 0;
+    }
+
+    /**
+     * Determine if the user has a specific permission.
+     */
+    public function hasPermission(string $permissionSlug): bool
+    {
+        if ($this->isOwner()) {
+            return true;
+        }
+
+        if (! $this->is_active) {
+            return false;
+        }
+
+        return (bool) ($this->role && $this->role->permissions()->where('slug', $permissionSlug)->exists());
     }
 }

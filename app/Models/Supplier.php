@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\InteractsWithTags;
+use Database\Factories\SupplierFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,15 +13,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Supplier extends Model
 {
-    /** @use HasFactory<\Database\Factories\SupplierFactory> */
+    /** @use HasFactory<SupplierFactory> */
     use HasFactory, InteractsWithTags, SoftDeletes;
 
     protected $fillable = [
         'branch_id',
         'name',
+        'is_corporate',
+        'company_name',
+        'tin',
         'phone',
         'email',
         'address',
+        'state',
         'materials_supplied',
         'balance',
         'notes',
@@ -33,6 +38,7 @@ class Supplier extends Model
         return [
             'materials_supplied' => 'array',
             'balance' => 'decimal:2',
+            'is_corporate' => 'boolean',
             'is_active' => 'boolean',
             'metadata' => 'array',
         ];
@@ -72,6 +78,8 @@ class Supplier extends Model
         return $query->where(function (Builder $builder) use ($term): void {
             $builder
                 ->where('name', 'like', "%{$term}%")
+                ->orWhere('company_name', 'like', "%{$term}%")
+                ->orWhere('tin', 'like', "%{$term}%")
                 ->orWhere('phone', 'like', "%{$term}%")
                 ->orWhere('email', 'like', "%{$term}%")
                 ->orWhere('address', 'like', "%{$term}%");

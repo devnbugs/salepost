@@ -1,13 +1,9 @@
 <?php
 
 use App\Providers\AppServiceProvider;
-use EragLaravelPwa\EragLaravelPwaServiceProvider;
-
+use App\Providers\FortifyServiceProvider;
 
 return [
     AppServiceProvider::class,
-];
-return [
-    // ...
-    EragLaravelPwaServiceProvider::class,
+    FortifyServiceProvider::class,
 ];

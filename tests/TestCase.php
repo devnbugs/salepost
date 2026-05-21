@@ -2,37 +2,15 @@
 
 namespace Tests;
 
-use App\Enums\UserRole;
-use App\Models\Branch;
-use App\Models\User;
-use Database\Seeders\PermissionSeeder;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Spatie\Permission\PermissionRegistrar;
+use Laravel\Fortify\Features;
 
 abstract class TestCase extends BaseTestCase
 {
-    protected function setUp(): void
+    protected function skipUnlessFortifyHas(string $feature, ?string $message = null): void
     {
-        parent::setUp();
-
-        $this->withoutMiddleware([
-            \Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class,
-            \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
-        ]);
-        $this->withoutVite();
-        app(PermissionRegistrar::class)->forgetCachedPermissions();
-    }
-
-    protected function createUserWithRole(UserRole $role, ?Branch $branch = null): User
-    {
-        $this->seed(PermissionSeeder::class);
-
-        $user = User::factory()->create([
-            'branch_id' => $branch?->id ?? Branch::factory(),
-        ]);
-
-        $user->assignRole($role->value);
-
-        return $user;
+        if (! Features::enabled($feature)) {
+            $this->markTestSkipped($message ?? "Fortify feature [{$feature}] is not enabled.");
+        }
     }
 }

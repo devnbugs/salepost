@@ -14,8 +14,7 @@ class InvoicePaymentReceivedNotification extends Notification implements ShouldQ
 
     public function __construct(
         public Payment $payment,
-    ) {
-    }
+    ) {}
 
     public function via(object $notifiable): array
     {

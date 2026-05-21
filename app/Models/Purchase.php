@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\PurchaseStatus;
 use App\Enums\SettlementStatus;
 use App\Models\Concerns\InteractsWithTags;
+use Database\Factories\PurchaseFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Purchase extends Model
 {
-    /** @use HasFactory<\Database\Factories\PurchaseFactory> */
+    /** @use HasFactory<PurchaseFactory> */
     use HasFactory, InteractsWithTags, SoftDeletes;
 
     protected $fillable = [

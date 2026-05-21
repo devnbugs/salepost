@@ -1,15 +1,7 @@
 <?php
 
-namespace Tests\Feature;
+test('returns a successful response', function () {
+    $response = $this->get(route('home'));
 
-use Tests\TestCase;
-
-class ExampleTest extends TestCase
-{
-    public function test_guests_are_redirected_to_login_from_the_root_route(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertRedirect(route('login'));
-    }
-}
+    $response->assertOk();
+});
