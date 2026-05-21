@@ -205,7 +205,7 @@ export default function AppShell({
                         <div className="border-t border-border p-4">
                             <div className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 p-3">
                                 <Avatar className="h-9 w-9 border border-border">
-                                    <AvatarImage src={user?.avatar} />
+                                    <AvatarImage src={user?.avatar || undefined} />
                                     <AvatarFallback className="bg-primary/10 text-xs font-semibold text-primary">
                                         {userInitials}
                                     </AvatarFallback>
@@ -306,7 +306,7 @@ export default function AppShell({
                                             className="relative h-9 w-9 rounded-full"
                                         >
                                             <Avatar className="h-9 w-9 border border-border transition-opacity hover:opacity-80">
-                                                <AvatarImage src={user?.avatar} />
+                                                <AvatarImage src={user?.avatar || undefined} />
                                                 <AvatarFallback className="bg-primary/10 text-xs font-semibold text-primary">
                                                     {userInitials}
                                                 </AvatarFallback>

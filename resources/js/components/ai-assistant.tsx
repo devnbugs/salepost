@@ -5,7 +5,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { Bot, MessageSquare, Send, X, User } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import { getVertexAI, getGenerativeModel } from 'firebase/vertexai-preview';
+import { getAI, getGenerativeModel } from 'firebase/ai';
 import app from '@/config/firebase';
 
 type Message = {
@@ -40,8 +40,8 @@ export default function AIAssistant() {
         setIsTyping(true);
 
         try {
-            const vertexAI = getVertexAI(app);
-            const model = getGenerativeModel(vertexAI, { model: 'gemini-1.5-flash' });
+            const ai = getAI(app);
+            const model = getGenerativeModel(ai, { model: 'gemini-1.5-flash' });
             
             const chat = model.startChat({
                 history: messages.map(m => ({
